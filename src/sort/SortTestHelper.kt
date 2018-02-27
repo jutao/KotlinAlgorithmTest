@@ -10,7 +10,7 @@ class SortTestHelper {
         @JvmStatic
         fun generateRandomArray(n:Int,rangeL:Int,rangeR:Int):IntArray{
             assert(rangeL<rangeR)
-            var arr:IntArray= IntArray(n)
+            var arr= IntArray(n)
             for(i in 0 until n){
                 arr[i]=Random().nextInt(rangeR-rangeL+1)+rangeL
             }

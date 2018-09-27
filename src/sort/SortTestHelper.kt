@@ -11,7 +11,7 @@ class SortTestHelper {
         @JvmStatic
         fun generateRandomArray(n:Int,rangeL:Int,rangeR:Int):Array<Int>{
             assert(rangeL<rangeR)
-            var arr:Array<Int> =Array(n, { i -> i * i })
+            var arr:Array<Int> =Array(n) { i -> i * i }
             for(i in 0 until n){
                 arr[i]=Random().nextInt(rangeR-rangeL+1)+rangeL
             }
@@ -47,7 +47,7 @@ class SortTestHelper {
             val startTime:Long = System.currentTimeMillis()
             sort.sort(arr,size)
             val endTime:Long = System.currentTimeMillis()
-            println(methodName+"共花费了"+(endTime-startTime)+"ms,排序结果如下:")
+            println(methodName+"共花费了"+(endTime-startTime)+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
             SortTestHelper.printArray(arr)
             println("排序"+isSorted(arr,size))
             println("------------------------------------")

@@ -29,6 +29,10 @@ fun main(args: Array<String>) {
 }
 class SmallestRangeI{
     companion object {
+        /**
+         * 最小差值 I 完成，理解题目花了一点时间，想通很简单，就是最大值尽量变小，最小值尽量变大。
+         * 但是如果最大值变小后小于最小值变大，说明差值可以为零
+         */
         @JvmStatic
         fun smallestRangeI(A: IntArray, K: Int): Int {
             Arrays.sort(A)

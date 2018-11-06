@@ -21,7 +21,10 @@ class MergeSort : Sort {
         var mid = (l + r) / 2
         mergeSort(arr, l, mid)
         mergeSort(arr, mid + 1, r)
-        merge(arr, l, mid, r)
+        if(arr[mid]>arr[mid+1]){
+            merge(arr, l, mid, r)
+        }
+
     }
 
     /**

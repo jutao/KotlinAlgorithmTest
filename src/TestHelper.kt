@@ -2,7 +2,7 @@ package sort
 
 import java.util.*
 
-class SortTestHelper {
+class TestHelper {
 
     companion object {
         /**

@@ -17,12 +17,34 @@ class SortTestHelper {
             }
             return arr
         }
+        /**
+         * 生成 n 个元素的随机数组，每个元素的范围是 [rangeL,rangeR]
+         */
+        @JvmStatic
+        fun generateRandomIntArray(n:Int,rangeL:Int,rangeR:Int):IntArray{
+            assert(rangeL<rangeR)
+            var arr =IntArray(n)
+            for(i in 0 until n){
+                arr[i]=Random().nextInt(rangeR-rangeL+1)+rangeL
+            }
+            return arr
+        }
 
         /**
          * 输出数组各个元素
          */
         @JvmStatic
         fun <T : Comparable<T>> printArray(arr:Array<T>){
+            for (a in arr) {
+                print("$a ")
+            }
+            println()
+        }
+        /**
+         * 输出数组各个元素
+         */
+        @JvmStatic
+        fun  printArray(arr:IntArray){
             for (a in arr) {
                 print("$a ")
             }

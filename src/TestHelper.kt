@@ -63,10 +63,31 @@ class TestHelper {
         }
 
         /**
+         * 执行排序，并输出排序花费的时间
+         */
+        @JvmStatic
+        fun testSort(methodName: String, sort: IntSort, arr: IntArray, size: Int) {
+            val startTime:Long = System.currentTimeMillis()
+            sort.sort(arr,size)
+            val endTime:Long = System.currentTimeMillis()
+            println(methodName+"共花费了"+(endTime-startTime)+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
+//            SortTestHelper.printArray(arr)
+            println("排序"+ isSorted(arr, size))
+            println("------------------------------------")
+        }
+
+        /**
          * 检查是否排序成功
          */
         @JvmStatic
         private fun <T : Comparable<T>> isSorted(arr: Array<T>, size: Int):String {
+            return if ((0 until (size-1)).any { arr[it]>arr[it +1] }) "失败" else "成功"
+        }
+        /**
+         * 检查是否排序成功
+         */
+        @JvmStatic
+        private fun  isSorted(arr: IntArray, size: Int):String {
             return if ((0 until (size-1)).any { arr[it]>arr[it +1] }) "失败" else "成功"
         }
     }

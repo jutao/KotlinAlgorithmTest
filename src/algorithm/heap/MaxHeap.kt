@@ -3,6 +3,9 @@ package algorithm.heap
 import sort.SortTestHelper
 import sort.TestHelper
 
+/**
+ * 最大堆
+ */
 class MaxHeap(capacity: Int) {
     private var data: IntArray = IntArray(capacity + 1)
     private var count: Int = 0

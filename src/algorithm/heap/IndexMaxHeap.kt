@@ -30,15 +30,18 @@ class IndexMaxHeap(capacity: Int) {
             capacity *= 2
             val copy1 = IntArray(capacity)
             val copy2 = IntArray(capacity)
+            val copy3 = IntArray(capacity)
             for (i in 0 until data.size) {
                 copy1[i] = data[i]
                 copy2[i] = indexes[i]
+                copy3[i] = reverse[i]
             }
             data = copy1
             indexes = copy2
+            reverse = copy3
 
         }
-        var i = index
+        var i = count
         i += 1
         data[i] = item
         indexes[++count] = i

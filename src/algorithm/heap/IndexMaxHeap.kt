@@ -1,14 +1,17 @@
-package algorithm.heap
-
-import sort.SortTestHelper
-import sort.TestHelper
+package sort
 
 /**
- * 最大索引堆
+ * ****************************************
+ * author：琚涛
+ * time：2019/1/3
+ * description：最大索引堆
+ * ****************************************
  */
+
 class IndexMaxHeap(capacity: Int) {
     private var data: IntArray = IntArray(capacity + 1)
     private var indexes: IntArray = IntArray(capacity + 1)
+    //reverse[i] 表示索引 i 在 indexes（堆）中的位置。引入 reveres 数组的意义是，可以在执行 change 这个方法的时候，使用 O(1) 这个时间复杂度，直接找到
     private var reverse: IntArray = IntArray(capacity + 1)
     private var count: Int = 0
     private var capacity: Int = capacity
@@ -46,7 +49,7 @@ class IndexMaxHeap(capacity: Int) {
     private fun shiftUp(k: Int) {
         var index = k
         while (index > 1 && data[indexes[index / 2]] < data[indexes[index]]) {
-            SortTestHelper.swap(indexes, index, index / 2)
+            TestHelper.swap(indexes, index, index / 2)
             reverse[indexes[k / 2]] = k / 2
             reverse[indexes[k]] = k
             index /= 2
@@ -58,7 +61,17 @@ class IndexMaxHeap(capacity: Int) {
      */
     fun print() {
         for (i in 1..count) {
-            print(data[i])
+            print(data[indexes[i]])
+            print(" ")
+        }
+        println()
+        for (i in 1..count) {
+            print(indexes[i])
+            print(" ")
+        }
+        println()
+        for (i in 1..count) {
+            print(reverse[i])
             print(" ")
         }
     }
@@ -74,7 +87,7 @@ class IndexMaxHeap(capacity: Int) {
 
     fun get(index: Int): Int {
         assert(contain(index))
-        return data[index + 1]
+        return data[indexes[index+1]]
     }
 
     private fun contain(index: Int): Boolean {
@@ -123,6 +136,8 @@ class IndexMaxHeap(capacity: Int) {
     fun heapify(arr: IntArray) {
         for (i in 0 until arr.size) {
             data[i + 1] = arr[i]
+            indexes[i + 1] = i + 1
+            reverse[i + 1] = i + 1
         }
         count = arr.size
         for (i in count / 2 downTo 1) {

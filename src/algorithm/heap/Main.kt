@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     val arr2 = arr.clone()
     val arr3 = arr.clone()
 //    for (i in arr) {
-//        maxHeap.insert(i)
+//        maxHeap.insertNormal(i)
 //    }
 //    println("数组原本：")
 //    for (a in arr) {

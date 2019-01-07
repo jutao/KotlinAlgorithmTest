@@ -4,11 +4,11 @@ import sort.algorithm.tree.bst.BST
 
 fun main(args: Array<String>) {
     val bst=BST()
-    bst.insert(1)
-    bst.insert(2)
-    bst.insert(14)
-    bst.insert(1)
-    bst.insert(5)
-    bst.insert(15)
+    bst.insertRecursion(1)
+    bst.insertRecursion(2)
+    bst.insertRecursion(14)
+    bst.insertRecursion(1)
+    bst.insertRecursion(5)
+    bst.insertRecursion(15)
     println(bst)
 }

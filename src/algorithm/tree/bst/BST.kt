@@ -1,5 +1,9 @@
 package sort.algorithm.tree.bst
 
+import com.sun.jmx.remote.internal.ArrayQueue
+import java.util.*
+import java.util.concurrent.BlockingQueue
+
 
 /**
  * 二分搜索树
@@ -14,7 +18,7 @@ fun main(args: Array<String>) {
     bst.insertNormal("dd", 6)
     bst.insertNormal("dd", 7)
     bst.insertNormal("bc", 8)
-    println(bst.postOrder())
+    println(bst.levelOrder())
 }
 
 class BST<K : Comparable<K>, V> {
@@ -153,7 +157,7 @@ class BST<K : Comparable<K>, V> {
     /**
      * 中序遍历
      */
-    fun inOrder(){
+    fun inOrder() {
         inOrder(root)
     }
 
@@ -161,7 +165,7 @@ class BST<K : Comparable<K>, V> {
      * 对以二叉树 node 为根节点的树进行中序遍历
      */
     private fun inOrder(node: Node?) {
-        if(node!=null){
+        if (node != null) {
             inOrder(node.left)
             println("key:" + node.key + "  value:" + node.value)
             inOrder(node.right)
@@ -169,7 +173,7 @@ class BST<K : Comparable<K>, V> {
     }
 
 
-    fun postOrder(){
+    fun postOrder() {
         postOrder(root)
     }
 
@@ -177,10 +181,29 @@ class BST<K : Comparable<K>, V> {
      * 对以二叉树 node 为根节点的树进行后序遍历
      */
     private fun postOrder(node: Node?) {
-        if(node!=null){
+        if (node != null) {
             postOrder(node.left)
             postOrder(node.right)
             println("key:" + node.key + "  value:" + node.value)
+        }
+    }
+
+    /**
+     * 广度优先遍历，层级遍历
+     */
+    fun levelOrder() {
+        val queue: Queue<Node> = ArrayDeque()
+        queue.offer(root)
+        while (!queue.isEmpty()) {
+            val node = queue.poll()
+            println("key:" + node.key + "  value:" + node.value)
+            if (node.left != null) {
+                queue.offer(node.left)
+            }
+            if (node.right != null) {
+                queue.offer(node.right)
+            }
+
         }
     }
 

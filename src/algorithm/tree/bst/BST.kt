@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     bst.insertNormal("dd", 6)
     bst.insertNormal("dd", 7)
     bst.insertNormal("bc", 8)
-    println(bst.search("bc"))
+    println(bst.postOrder())
 }
 
 class BST<K : Comparable<K>, V> {
@@ -128,6 +128,59 @@ class BST<K : Comparable<K>, V> {
             node.key == key -> node.value
             key < node.key -> search(node.left, key)
             else -> search(node.right, key)
+        }
+    }
+
+    /**
+     * 前序遍历
+     */
+    fun preOrder() {
+        preOrder(root)
+    }
+
+    /**
+     * 对以二叉树 node 为根节点的树进行前序遍历
+     */
+    private fun preOrder(node: Node?) {
+        if (node != null) {
+            println("key:" + node.key + "  value:" + node.value)
+            preOrder(node.left)
+            preOrder(node.right)
+        }
+    }
+
+
+    /**
+     * 中序遍历
+     */
+    fun inOrder(){
+        inOrder(root)
+    }
+
+    /**
+     * 对以二叉树 node 为根节点的树进行中序遍历
+     */
+    private fun inOrder(node: Node?) {
+        if(node!=null){
+            inOrder(node.left)
+            println("key:" + node.key + "  value:" + node.value)
+            inOrder(node.right)
+        }
+    }
+
+
+    fun postOrder(){
+        postOrder(root)
+    }
+
+    /**
+     * 对以二叉树 node 为根节点的树进行后序遍历
+     */
+    private fun postOrder(node: Node?) {
+        if(node!=null){
+            postOrder(node.left)
+            postOrder(node.right)
+            println("key:" + node.key + "  value:" + node.value)
         }
     }
 

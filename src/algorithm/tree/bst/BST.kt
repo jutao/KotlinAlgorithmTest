@@ -1,8 +1,6 @@
 package sort.algorithm.tree.bst
 
-import com.sun.jmx.remote.internal.ArrayQueue
 import java.util.*
-import java.util.concurrent.BlockingQueue
 
 
 /**
@@ -10,15 +8,17 @@ import java.util.concurrent.BlockingQueue
  */
 fun main(args: Array<String>) {
     val bst: BST<String, Int> = BST()
-    bst.insertNormal("a", 1)
+    bst.insertNormal("za", 1)
     bst.insertNormal("b", 2)
     bst.insertNormal("c", 3)
-    bst.insertNormal("aa", 4)
     bst.insertRecursion("cc", 5)
-    bst.insertNormal("dd", 6)
-    bst.insertNormal("dd", 7)
-    bst.insertNormal("bc", 8)
-    println(bst.levelOrder())
+    bst.insertNormal("bc", 6)
+    bst.insertNormal("zzz", 7)
+    bst.insertNormal("zzzc", 99)
+    bst.insertNormal("zz", 8)
+    bst.insertNormal("ac", 999)
+    bst.remove("za")
+    println(bst)
 }
 
 class BST<K : Comparable<K>, V> {
@@ -208,9 +208,125 @@ class BST<K : Comparable<K>, V> {
     }
 
     /**
+     * 在二分搜索树中寻找最小值
+     */
+    fun minNum(): V? {
+        if (root == null) {
+            return null
+        }
+        return minNum(root!!).value
+    }
+
+    private fun minNum(root: Node): Node {
+        if (root.left == null) {
+            return root
+        }
+        return minNum(root.left!!)
+    }
+
+
+    /**
+     * 在二分搜索树中寻找最大值
+     */
+    fun maxNum(): V? {
+        if (root == null) {
+            return null
+        }
+        return maxNum(root!!).value
+    }
+
+    private fun maxNum(root: Node): Node {
+        if (root.right == null) {
+            return root
+        }
+        return maxNum(root.right!!)
+    }
+
+    /**
+     * 删除二叉树的最小节点
+     */
+    fun removeMin() {
+        if (root == null) {
+            return
+        }
+        root = removeMin(root!!)
+    }
+
+    private fun removeMin(node: Node): Node? {
+        if (node.left == null) {
+            count--
+            return node.right
+        }
+        node.left = removeMin(node.left!!)
+        return node
+    }
+
+    /**
+     * 删除二叉树的最大节点
+     */
+    fun removeMax() {
+        if (root == null) {
+            return
+        }
+        root = removeMax(root!!)
+    }
+
+    private fun removeMax(node: Node): Node? {
+        if (node.right == null) {
+            count--
+            return node.left
+        }
+        node.right = removeMax(node.right!!)
+        return node
+    }
+
+    /**
+     * 删除 key 所在的节点
+     */
+    fun remove(key: K) {
+        root = remove(root, key)
+    }
+
+    private fun remove(node: Node?, key: K): Node? {
+        if (node == null) {
+            return null
+        }
+        if (key < node.key) {
+            node.left = remove(node.left, key)
+            return node
+        } else if (key > node.key) {
+            node.right = remove(node.right, key)
+            return node
+        } else {
+            if (node.left == null) {
+                count--
+                return node.right
+            }
+            if (node.right == null) {
+                count--
+                return node.left
+            }
+            //找右节点的最小节点
+            val successor = minNum(node.right!!)
+            node.change(successor)
+            successor.right=removeMin(node.right!!)
+            successor.left=node.left
+            return successor
+        }
+
+    }
+
+
+    /**
      * 二分搜索树节点
      */
     internal inner class Node(var key: K, var value: V) {
+        fun change(node: Node) {
+            key=node.key
+            value=node.value
+
+        }
+
         var left: Node? = null
         var right: Node? = null
 

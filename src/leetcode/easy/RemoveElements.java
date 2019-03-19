@@ -1,5 +1,8 @@
 package easy;
 
+import medium.ListNodeHelper;
+import medium.ListNodeHelper.ListNode;
+
 /**
  * ****************************************
  * author：琚涛
@@ -10,50 +13,29 @@ package easy;
  */
 public class RemoveElements {
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1);
-        listNode.next = new ListNode(2);
-        listNode.next.next = new ListNode(3);
-        listNode.next.next.next = new ListNode(4);
-        listNode.next.next.next.next = new ListNode(6);
-        listNode.next.next.next.next.next = new ListNode(6);
-        listNode.next.next.next.next.next.next = new ListNode(6);
-        listNode.next.next.next.next.next.next.next = new ListNode(6);
+        ListNode listNode = ListNodeHelper.generateListNode(new int[]{1, 1, 1, 11, 2, 6, 3, 4, 5, 6,6,6,6,6,6});
         ListNode listNode1 = new RemoveElements().removeElements(listNode, 6);
-        System.out.println(listNode1);
+        ListNodeHelper.printListNode(listNode1);
+
     }
 
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
-            return null;
-        }
-        while (head.val == val) {
-            head = head.next;
-            if (head == null) {
-                return head;
-            }
-        }
-        ListNode currentNode = head.next;
-        ListNode lastNode = head;
-        while (currentNode != null) {
-            if (currentNode.val == val) {
-                lastNode.next = currentNode.next;
-                currentNode = currentNode.next;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode cur = dummy.next;
+        ListNode last = dummy;
+        while (cur != null) {
+            if (cur.val == val) {
+                last.next = cur.next;
+                cur = cur.next;
                 continue;
             }
-            lastNode = currentNode;
-            currentNode = currentNode.next;
+            last = cur;
+            cur = cur.next;
         }
-        return head;
+        return dummy.next;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
-    }
 }
 
 

@@ -12,18 +12,22 @@ package leetcode.medium;
  * 例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
  */
 public class LowestCommonAncestor {
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+    public  TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || p == root || q == root) {
             return root;
         }
         TreeNode left = lowestCommonAncestor(root.left, p, q);
+        if(left!=null&&left!=p&&left!=q){
+            return left;
+        }
         TreeNode right = lowestCommonAncestor(root.right, p, q);
         if (left != null && right != null) {
             return root;
         }
         return left == null ? right : left;
     }
-    public class TreeNode {
+    public  class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

@@ -12,6 +12,9 @@ import java.util.List;
  * 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
  */
 public class LetterCombinations {
+    public static void main(String[] args) {
+        System.out.printf(new LetterCombinations().letterCombinations("23")+"");
+    }
     List<String> list = new ArrayList<>();
 
     public List<String> letterCombinations(String digits) {

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Combine {
     public static void main(String[] args) {
-        System.out.println(new Combine().combine(100, 2));
+        System.out.println(new Combine().combine(5, 2));
     }
 
     List<List<Integer>> res;

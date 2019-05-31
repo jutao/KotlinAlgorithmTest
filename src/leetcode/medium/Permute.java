@@ -15,8 +15,9 @@ public class Permute {
     int[] visited;
 
     public static void main(String[] args) {
-        System.out.println(new Permute().permute(new int[]{1, 2,3}));
+        System.out.println(new Permute().permute(new int[]{1, 2,3,4,5,6}));
     }
+
     public List<List<Integer>> permute(int[] nums) {
         res=new ArrayList<>();
         temp=new ArrayList<>();
@@ -26,7 +27,7 @@ public class Permute {
     }
 
     private void backtrack(int[] nums) {
-        if(temp.size()==nums.length){
+        if(nums.length==temp.size()){
             res.add(new ArrayList<>(temp));
             return;
         }
@@ -37,8 +38,8 @@ public class Permute {
             temp.add(nums[i]);
             visited[i]=1;
             backtrack(nums);
-            visited[i]=0;
             temp.remove(temp.size()-1);
+            visited[i]=0;
         }
     }
 }

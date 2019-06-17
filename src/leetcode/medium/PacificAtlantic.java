@@ -14,8 +14,7 @@ import java.util.List;
  * 请找出那些水流既可以流动到“太平洋”，又能流动到“大西洋”的陆地单元的坐标。
  */
 public class PacificAtlantic {
-    boolean[][] visited;
-    final int[][] direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    final int[][] direction = {{1}};
 
     public List<int[]> pacificAtlantic(int[][] matrix) {
         List<int[]> res = new ArrayList<>();
@@ -23,11 +22,22 @@ public class PacificAtlantic {
         if (matrix == null || matrix.length == 0) {
             return res;
         }
-        visited = new boolean[matrix.length][matrix[0].length];
+        boolean[][] visitedPacific = new boolean[matrix.length][matrix[0].length];
+        boolean[][] visitedAtlantic = new boolean[matrix.length][matrix[0].length];
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (pacific(matrix, i, j, Integer.MAX_VALUE) && atlantic(matrix, i, j, Integer.MAX_VALUE)) {
+                if (i == 0 || j == 0) {
+                    dfs(matrix, i, j, Integer.MIN_VALUE, visitedPacific);
+                }
+                if (i == matrix.length - 1 || j == matrix[i].length - 1) {
+                    dfs(matrix, i, j, Integer.MIN_VALUE, visitedAtlantic);
+                }
+            }
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (visitedAtlantic[i][j] && visitedPacific[i][j]) {
                     res.add(new int[]{i, j});
                 }
             }
@@ -35,84 +45,14 @@ public class PacificAtlantic {
         return res;
     }
 
-    /**
-     * 大西洋
-     *
-     * @param matrix
-     * @param curX
-     * @param curY
-     * @param lastValue
-     * @return
-     */
-    private boolean atlantic(int[][] matrix, int curX, int curY, int lastValue) {
-        if (lastValue < matrix[curX][curY]) {
-            return false;
+    private void dfs(int[][] matrix, int curX, int curY, int lastValue, boolean[][] visited) {
+        if (curX < 0 || curY < 0 || curX >= matrix.length || curY >= matrix[0].length || lastValue > matrix[curX][curY]||visited[curX][curY]) {
+            return;
         }
-        if (visited[curX][curY]) {
-            return false;
-        }
-        if (curX == matrix.length - 1 || curY == matrix[0].length - 1) {
-            return true;
-        }
+        visited[curX][curY]=true;
         for (int[] ints : direction) {
-            int newX = ints[0] + curX;
-            int newY = ints[1] + curY;
-            if(isInArea(newX,newY,matrix)){
-                visited[curX][curY] = true;
-                boolean res = atlantic(matrix, newX, newY, matrix[curX][curY]);
-                visited[curX][curY] = false;
-                if (res) {
-                    return true;
-                }
-            }
-
+            dfs(matrix,curX+ints[0],curY+ints[1],matrix[curX][curY],visited);
         }
-        return false;
-    }
-
-    /**
-     * 太平洋
-     *
-     * @param matrix
-     * @param curX
-     * @param curY
-     * @param lastValue
-     * @return
-     */
-    private boolean pacific(int[][] matrix, int curX, int curY, int lastValue) {
-        if (lastValue < matrix[curX][curY]) {
-            return false;
-        }
-        if (visited[curX][curY]) {
-            return false;
-        }
-        if (curX == 0 || curY == 0) {
-            return true;
-        }
-        for (int[] ints : direction) {
-            int newX = ints[0] + curX;
-            int newY = ints[1] + curY;
-            if(isInArea(newX,newY,matrix)){
-                visited[curX][curY] = true;
-                boolean res = pacific(matrix, newX, newY, matrix[curX][curY]);
-                visited[curX][curY] = false;
-                if (res) {
-                    return true;
-                }
-            }
-
-        }
-        return false;
-    }
-
-    private boolean isInArea(int newX, int newY,int[][] matrix) {
-        if (newX < 0 || newY < 0) {
-            return false;
-        }
-        if (newX >= matrix.length || newY >= matrix[0].length) {
-            return false;
-        }
-        return true;
     }
 
 }

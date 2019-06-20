@@ -1,4 +1,4 @@
-package medium;
+package leetcode.medium;
 
 import medium.ListNodeHelper.ListNode;
 
@@ -9,6 +9,7 @@ import java.util.Stack;
  * author：琚涛
  * time：2019/3/19
  * description：445. 两数相加 II
+ * tag：链表
  * 给定两个非空链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储单个数字。将这两数相加会返回一个新的链表。
  * 你可以假设除了数字 0 之外，这两个数字都不会以零开头。
  * 进阶:
@@ -17,10 +18,10 @@ import java.util.Stack;
  */
 public class AddTwoNumbersII {
     public static void main(String[] args) {
-        ListNode listNode1 = ListNodeHelper.generateListNode(new int[]{9, 9, 9, 9});
-        ListNode listNode2 = ListNodeHelper.generateListNode(new int[]{1, 1, 1, 1});
+        ListNode listNode1 = medium.ListNodeHelper.generateListNode(new int[]{9, 9, 9, 9});
+        ListNode listNode2 = medium.ListNodeHelper.generateListNode(new int[]{1, 1, 1, 1});
         ListNode listNode = new AddTwoNumbersII().addTwoNumbers(listNode1, listNode2);
-        ListNodeHelper.printListNode(listNode);
+        medium.ListNodeHelper.printListNode(listNode);
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

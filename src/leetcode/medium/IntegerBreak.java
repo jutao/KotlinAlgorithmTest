@@ -1,6 +1,4 @@
-package leetcode.hard;
-
-import java.util.Arrays;
+package leetcode.medium;
 
 /**
  * author：jutao

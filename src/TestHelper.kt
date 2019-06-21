@@ -1,6 +1,8 @@
 package sort
 
-import java.util.*
+import kotlin.random.Random
+import kotlin.system.measureTimeMillis
+
 
 class TestHelper {
 
@@ -13,7 +15,7 @@ class TestHelper {
             assert(rangeL<rangeR)
             var arr:Array<Int> =Array(n) { i -> i * i }
             for(i in 0 until n){
-                arr[i]=Random().nextInt(rangeR-rangeL+1)+rangeL
+                arr[i]= Random.nextInt(rangeR-rangeL+1)+rangeL
             }
             return arr
         }
@@ -53,10 +55,10 @@ class TestHelper {
          */
         @JvmStatic
         fun<T : Comparable<T>> testSort(methodName: String, sort: Sort, arr: Array<T>, size: Int) {
-            val startTime:Long = System.currentTimeMillis()
-            sort.sort(arr,size)
-            val endTime:Long = System.currentTimeMillis()
-            println(methodName+"共花费了"+(endTime-startTime)+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
+            val measureTimeMillis = measureTimeMillis {
+                sort.sort(arr,size)
+            }
+            println(methodName+"共花费了"+measureTimeMillis+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
             SortTestHelper.printArray(arr)
             println("排序"+isSorted(arr,size))
             println("------------------------------------")
@@ -67,10 +69,9 @@ class TestHelper {
          */
         @JvmStatic
         fun testSort(methodName: String, sort: IntSort, arr: IntArray, size: Int) {
-            val startTime:Long = System.currentTimeMillis()
-            sort.sort(arr,size)
-            val endTime:Long = System.currentTimeMillis()
-            println(methodName+"共花费了"+(endTime-startTime)+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
+            val measureTimeMillis = measureTimeMillis { sort.sort(arr, size) }
+
+            println(methodName+"共花费了"+measureTimeMillis+"ms 对"+size+"个数进行排序,"+"排序结果如下:")
 //            SortTestHelper.printArray(arr)
             println("排序"+ isSorted(arr, size))
             println("------------------------------------")

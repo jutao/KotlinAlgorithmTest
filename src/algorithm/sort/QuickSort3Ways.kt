@@ -2,7 +2,7 @@ package algorithm.sort
 
 import sort.Sort
 import sort.SortTestHelper
-import java.util.*
+import kotlin.random.Random
 
 /**
  * 3路快排
@@ -23,7 +23,7 @@ class QuickSort3Ways : Sort {
         if(l>=r){
             return
         }
-        SortTestHelper.swap(arr, l, Random().nextInt(r - l + 1) + l)
+        SortTestHelper.swap(arr, l, Random.nextInt(r - l + 1) + l)
         var v: T = arr[l]
         //arr[l+1..lt]<v
         var lt = l

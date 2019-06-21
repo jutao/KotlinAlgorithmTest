@@ -44,14 +44,14 @@ fun main(args: Array<String>) {
 }
 
 fun numUniqueEmails(emails: Array<String>): Int {
-    var set : HashSet<String> = hashSetOf()
+    var set : Set<String> = emptySet<String>()
     for (email in emails) {
         val split = email.split("@")
         //去掉点
         val replace = split[0].replace(".", "")
         val split1 = replace.split("+")
         var result=split1[0]+"@"+split[1]
-        set.add(result)
+        set.plus(result)
     }
     return set.size
 }

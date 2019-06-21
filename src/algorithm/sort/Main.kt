@@ -1,7 +1,6 @@
 package sort
 
 import algorithm.sort.*
-import java.util.*
 
 fun main(args: Array<String>) {
     val arr = SortTestHelper.generateRandomArray(10000, 5, 99999)

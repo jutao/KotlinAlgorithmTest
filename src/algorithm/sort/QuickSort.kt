@@ -2,7 +2,7 @@ package algorithm.sort
 
 import sort.Sort
 import sort.SortTestHelper
-import java.util.*
+import kotlin.random.Random
 
 /**
  * 快速排序
@@ -26,7 +26,7 @@ class QuickSort : Sort {
 
     
     private fun <T : Comparable<T>> partition(arr: Array<T>, l: Int, r: Int): Int {
-        SortTestHelper.swap(arr, l, Random().nextInt(r - l + 1) + l)
+        SortTestHelper.swap(arr, l, Random.nextInt(r - l + 1) + l)
         var v: T = arr[l]
         //arr[l+1,j]<v;arr[j+1,i]>v
         var j = l
@@ -45,7 +45,7 @@ class QuickSort : Sort {
      */
     private fun <T : Comparable<T>> partition2(arr: Array<T>, l: Int, r: Int): Int {
         //随机选择 partition ，以免基本有序的数组效率过低
-        SortTestHelper.swap(arr, l, Random().nextInt(r - l + 1) + l)
+        SortTestHelper.swap(arr, l, Random.nextInt(r - l + 1) + l)
         var v: T = arr[l]
 
         var i = l + 1

@@ -72,7 +72,7 @@ private operator fun Any?.compareTo(any: Any?): Int {
             a < b -> -1
             else -> 0
         }
-    } catch (exception: Exception) {
+    } catch (exception:Throwable) {
         0
     }
 

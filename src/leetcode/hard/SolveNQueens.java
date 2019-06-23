@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class SolveNQueens {
     public static void main(String[] args) {
-        List<List<String>> lists = new SolveNQueens().solveNQueens(4);
+        List<List<String>> lists = new SolveNQueens().solveNQueens(5);
         for (List<String> list : lists) {
             for (String s : list) {
                 for (char c : s.toCharArray()) {
@@ -22,6 +22,8 @@ public class SolveNQueens {
                 }
                 System.out.println();
             }
+            System.out.println();
+            System.out.println("-----------------------------------");
             System.out.println();
         }
     }

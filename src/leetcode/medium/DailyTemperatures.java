@@ -11,10 +11,40 @@ package leetcode.medium;
  */
 public class DailyTemperatures {
     public static void main(String[] args) {
-        new DailyTemperatures().dailyTemperatures(new int[]{73, 74, 75, 71, 69, 72, 76, 73});
+        new DailyTemperatures().dailyTemperatures(new int[]{73,74,75,71,69,72,76,73});
     }
 
     public int[] dailyTemperatures(int[] T) {
+        int[] res = new int[T.length];
+        int[] temp = new int[71];
+        temp[T[T.length-1] - 30]=T.length-1;
+        int max=T[T.length-1];
+        for (int i = T.length - 2; i >= 0; i--) {
+            if(T[i]==100){
+                max=T[i];
+                temp[T[i] - 30] = i;
+                res[i]=0;
+                continue;
+            }
+            if(max<=T[i]){
+                max=T[i];
+                temp[T[i] - 30] = i;
+                res[i]=0;
+                continue;
+            }
+            int p = T[i] + 1;
+            while (p <= 100) {
+                if (temp[p - 30] != 0) {
+                    res[i] = res[i]==0?temp[p - 30] - i:Math.min(temp[p - 30] - i,res[i]);
+                }
+                p++;
+            }
+            temp[T[i] - 30] = i;
+        }
+        return res;
+    }
+
+    public int[] dailyTemperatures1(int[] T) {
         int[] res = new int[T.length];
         for (int i = T.length - 2; i >= 0; i--) {
             int j = i + 1;
@@ -22,8 +52,8 @@ public class DailyTemperatures {
                 if (T[j] > T[i]) {
                     res[i] = j - i;
                     break;
-                }else if(res[j]==0){
-                    res[i]=0;
+                } else if (res[j] == 0) {
+                    res[i] = 0;
                     break;
                 }
                 j += res[j];

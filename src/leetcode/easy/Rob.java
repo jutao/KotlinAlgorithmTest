@@ -1,4 +1,4 @@
-package easy;
+package leetcode.easy;
 
 /**
  * ****************************************
@@ -48,4 +48,5 @@ public class Rob {
         }
         return Math.max(memo[0],memo[1]);
     }
+
 }

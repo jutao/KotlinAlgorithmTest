@@ -12,7 +12,7 @@ public class Knap01 {
         int[] v = {9, 23, 7, 22, 25};
         int index = w.length;
         int c = 28;
-        System.out.println(new Knap01().bestValue(w, v, index, c));
+        System.out.println(new Knap01().bestValue2(w, v, index, c));
     }
 
     /**
@@ -24,7 +24,7 @@ public class Knap01 {
      * @param c     背包总容量
      * @return 最大价值
      */
-    private int bestValue(int[] w, int[] v, int index, int c) {
+    private int bestValue1(int[] w, int[] v, int index, int c) {
         assert (w.length == v.length && c >= 0);
         int[][] memory = new int[index][c + 1];
 
@@ -39,5 +39,19 @@ public class Knap01 {
             }
         }
         return memory[index - 1][c - 1];
+    }
+    private int bestValue2(int[] w, int[] v, int index, int c) {
+        assert (w.length == v.length && c >= 0);
+        int[] memory = new int[c + 1];
+
+        for (int i = 0; i <= c; i++) {
+            memory[i] = i >= w[0] ? v[0] : 0;
+        }
+        for (int i = 1; i < index; i++) {
+            for (int j = c; j >=w[i]; j--) {
+                memory[j] = Math.max(memory[j], v[i] + memory[j - w[i]]);
+            }
+        }
+        return memory[c];
     }
 }

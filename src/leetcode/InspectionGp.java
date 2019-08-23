@@ -23,19 +23,19 @@ public class InspectionGp {
                 "2028马甲包(备案) https://play.google.com/store/apps/details?id=com.chons.bance",
                 "2063绿包(备案) https://play.google.com/store/apps/details?id=com.sadhllas.vaynhe",
                 "2064(备案) https://play.google.com/store/apps/details?id=com.luyiopp.chtyqer",
-                "2065 https://play.google.com/store/apps/details?id=doiupp.cldska.myunc",
+                "2065 https://play.google.com/store/apps/details?id=com.comdong.ayimeme",
                 "2066V11(备案) https://play.google.com/store/apps/details?id=com.tientn.losbns",
                 "2068 https://play.google.com/store/apps/details?id=com.skongs.ldonglon",
-                "2069 https://play.google.com/store/apps/details?id=com.vavay.loan",
+                "2069V11 https://play.google.com/store/apps/details?id=com.seekvay.suncase",
                 "2070 https://play.google.com/store/apps/details?id=umliop.lkhj.daslp",
-                "2071 https://play.google.com/store/apps/details?id=com.secondp.uperbi",
+                "2071包打乱 https://play.google.com/store/apps/details?id=com.trong.giayyu",
                 "2072暂时不上 https://play.google.com/store/apps/details?id=ksdlop.lomsak.uidso",
                 "2074 https://play.google.com/store/apps/details?id=com.vayvang.com",
                 "2075 https://play.google.com/store/apps/details?id=com.tuigaotin.xinyongmidai",
                 "2076暂时不上 https://play.google.com/store/apps/details?id=com.yccash.vn",
                 "2083(备案) https://play.google.com/store/apps/details?id=com.saigoncash.sikuo",
                 "2085暂时不上 https://play.google.com/store/apps/details?id=com.ms.easydong",
-                "2094暂时不上 https://play.google.com/store/apps/details?id=com.vivay.hjdaiv"
+                "2094暂时不上 https://play.google.com/store/apps/details?id=jdsin.uqowe.vayoes"
         };
         inspection(urls);
     }

@@ -2,10 +2,13 @@ package leetcode;
 
 import sun.net.www.http.HttpClient;
 
+import javax.xml.crypto.Data;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * author：jutao
@@ -14,6 +17,9 @@ import java.net.URLConnection;
  */
 public class InspectionGp {
     public static void main(String[] args) {
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String curDate = simpleDateFormat.format(System.currentTimeMillis());  //当前日期
+        System.out.println(curDate);
         System.getProperties().setProperty("http.proxyHost", "127.0.0.1");
         System.getProperties().setProperty("http.proxyPort", "49502");
         System.setProperty("https.proxyHost", "127.0.0.1");
@@ -22,20 +28,21 @@ public class InspectionGp {
                 "2028 https://play.google.com/store/apps/details?id=com.qwxawq.jax",
                 "2028马甲包(备案) https://play.google.com/store/apps/details?id=com.chons.bance",
                 "2063绿包(备案) https://play.google.com/store/apps/details?id=com.sadhllas.vaynhe",
-                "2064(备案) https://play.google.com/store/apps/details?id=com.luyiopp.chtyqer",
-                "2065 https://play.google.com/store/apps/details?id=com.comdong.ayimeme",
-                "2066V11(备案) https://play.google.com/store/apps/details?id=com.tientn.losbns",
+                "2064(备案) https://play.google.com/store/apps/details?id=com.heycok.amidnes",
+                "2065V11 https://play.google.com/store/apps/details?id=com.lppdoc.lmlcopx",
+                "2066V11(备案) https://play.google.com/store/apps/details?id=com.mklopx.tyux",
                 "2068 https://play.google.com/store/apps/details?id=com.skongs.ldonglon",
-                "2069V11 https://play.google.com/store/apps/details?id=com.seekvay.suncase",
-                "2070 https://play.google.com/store/apps/details?id=umliop.lkhj.daslp",
-                "2071包打乱 https://play.google.com/store/apps/details?id=com.trong.giayyu",
+                "2069V11(备案) https://play.google.com/store/apps/details?id=com.novhey.vblmop",
+                "2070(备案) https://play.google.com/store/apps/details?id=umliop.lkhj.daslp",
+                "2071V11 https://play.google.com/store/apps/details?id=com.olinm.mnvcf",
                 "2072暂时不上 https://play.google.com/store/apps/details?id=ksdlop.lomsak.uidso",
-                "2074 https://play.google.com/store/apps/details?id=com.vayvang.com",
+                "2074(备案) https://play.google.com/store/apps/details?id=com.vayvang.com",
                 "2075 https://play.google.com/store/apps/details?id=com.tuigaotin.xinyongmidai",
                 "2076暂时不上 https://play.google.com/store/apps/details?id=com.yccash.vn",
                 "2083(备案) https://play.google.com/store/apps/details?id=com.saigoncash.sikuo",
-                "2085暂时不上 https://play.google.com/store/apps/details?id=com.ms.easydong",
-                "2094暂时不上 https://play.google.com/store/apps/details?id=jdsin.uqowe.vayoes"
+                "2085V4 https://play.google.com/store/apps/details?id=com.ms.easydong",
+                "2094V4 https://play.google.com/store/apps/details?id=com.molibiao.sadamn",
+                "2096V12 https://play.google.com/store/apps/details?id=com.mlonhp.mlnjvf"
         };
         inspection(urls);
     }
